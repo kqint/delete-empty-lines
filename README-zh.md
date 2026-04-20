@@ -1,4 +1,4 @@
-# Obsidian 删除空行
+# Obsidian Delete Empty Lines
 
 用于删除或压缩笔记中的空行，支持处理整篇文档或仅处理选中内容。
 
