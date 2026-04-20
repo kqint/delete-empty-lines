@@ -3,8 +3,8 @@
     "name": "Delete Empty Lines",
     "version": "1.0.0",
     "minAppVersion": "0.15.0",
-    "description": "删除笔记中的空行，支持压缩多个连续空行",
-    "author": "kqint + DeepSeek",
-    "authorUrl": "",
+    "description": "Delete empty lines in notes, and support compressing multiple consecutive empty lines into a configurable number of empty lines.",
+    "author": "kqint",
+    "authorUrl": "https://github.com/kqint",
     "isDesktopOnly": false
 }
