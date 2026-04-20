@@ -42,11 +42,6 @@ Language changes apply immediately.
    `.obsidian/plugins/delete-empty-lines/`
 3. Restart Obsidian and enable the plugin in Community Plugins.
 
-### BRAT
-
-1. Install [BRAT](https://github.com/TfTHacker/obsidian42-brat).
-2. Add this repository in BRAT settings.
-3. Install/update through BRAT.
 
 ## Internationalization
 
@@ -61,10 +56,6 @@ To add a new language:
 2. Translate all values.
 3. Add that language option in the plugin settings UI.
 
-## Compatibility
-
-- Obsidian `v0.15.0+`
-- Windows, macOS, Linux, iOS, Android
 
 ## License
 

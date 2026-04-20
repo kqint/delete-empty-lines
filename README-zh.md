@@ -42,11 +42,6 @@
    `.obsidian/plugins/delete-empty-lines/`
 3. 重启 Obsidian，并在社区插件中启用本插件。
 
-### BRAT 安装
-
-1. 安装 [BRAT](https://github.com/TfTHacker/obsidian42-brat)。
-2. 在 BRAT 设置中添加本仓库。
-3. 通过 BRAT 安装和更新。
 
 ## 国际化
 
@@ -61,10 +56,6 @@
 2. 翻译其中所有值。
 3. 在插件设置界面中加入对应语言选项。
 
-## 兼容性
-
-- Obsidian `v0.15.0+`
-- Windows、macOS、Linux、iOS、Android
 
 ## 许可证
 
