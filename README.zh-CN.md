@@ -29,7 +29,7 @@
 
 ### 手动安装
 
-1. 下载最新发布文件。
+1. 在 [releases/latest](https://github.com/kqint/obsidian-delete-empty-lines/releases/latest) 下载 `main.js` 和 `manifest.json`。
 2. 将 `main.js` 和 `manifest.json` 复制到：
    `.obsidian/plugins/delete-empty-lines/`
 3. 重启 Obsidian，并在社区插件中启用本插件。

@@ -1,6 +1,6 @@
 # Obsidian Delete Empty Lines
 
-Delete or compress empty lines in your notes, for either the whole document or the current selection.
+Delete or compress empty lines in your notes. Supports processing the entire document or only the selected content.
 
 [中文文档](./README.zh-CN.md)
 
@@ -29,7 +29,7 @@ The `{count}` value follows your settings.
 
 ### Manual
 
-1. Download the latest release files.
+1. Download `main.js` and `manifest.json` from [releases/latest](https://github.com/kqint/obsidian-delete-empty-lines/releases/latest).
 2. Copy `main.js` and `manifest.json` to:
    `.obsidian/plugins/delete-empty-lines/`
 3. Restart Obsidian and enable the plugin in Community Plugins.
