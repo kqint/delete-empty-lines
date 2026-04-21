@@ -2,7 +2,7 @@
 
 Delete or compress empty lines in your notes, for either the whole document or the current selection.
 
-[中文文档](./README-zh.md)
+[中文文档](./README.zh-CN.md)
 
 ## Features
 
@@ -30,23 +30,29 @@ The `{count}` value follows your settings.
 ### Manual
 
 1. Download the latest release files.
-2. Copy `main.js`, `manifest.json`, and the `locales/` folder to:
+2. Copy `main.js` and `manifest.json` to:
    `.obsidian/plugins/delete-empty-lines/`
 3. Restart Obsidian and enable the plugin in Community Plugins.
 
 
 ## Internationalization
 
-Translation files are in `locales/`:
+Translation source files are in `locales/`:
 
 - `locales/en.json`
-- `locales/zh.json`
+- `locales/zh-CN.json`
+
+Build command bundles these locale files into `main.js`:
+
+```bash
+npm run build
+```
 
 To add a new language:
 
 1. Copy `locales/en.json` to a new file like `locales/ja.json`.
 2. Translate all values.
-3. Add that language option in the plugin settings UI.
+3. Add that language option in `src/main.ts` and run `npm run build`.
 
 
 ## License

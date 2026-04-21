@@ -1,0 +1,7 @@
+node_modules/
+
+# 构建产物
+main.js
+
+# obsidian 配置文件
+data.json

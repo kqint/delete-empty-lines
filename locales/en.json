@@ -34,10 +34,11 @@
       "desc": "Choose display language. Changes take effect immediately.",
       "options": {
         "auto": "Auto (follow Obsidian)",
-        "zh": "Simplified Chinese",
+        "zh-CN": "Simplified Chinese",
         "en": "English"
       }
     },
+    "numberInputPlaceholder": ">=0",
     "preserveIndentation": {
       "name": "Delete lines with only whitespace",
       "desc": "When enabled, lines containing only spaces and tabs are treated as empty lines and deleted."

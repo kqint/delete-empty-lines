@@ -30,23 +30,29 @@
 ### 手动安装
 
 1. 下载最新发布文件。
-2. 将 `main.js`、`manifest.json` 和 `locales/` 目录复制到：
+2. 将 `main.js` 和 `manifest.json` 复制到：
    `.obsidian/plugins/delete-empty-lines/`
 3. 重启 Obsidian，并在社区插件中启用本插件。
 
 
 ## 国际化
 
-语言文件位于 `locales/`：
+语言源文件位于 `locales/`：
 
 - `locales/en.json`
-- `locales/zh.json`
+- `locales/zh-CN.json`
+
+使用以下命令可将这些语言文件打包进 `main.js`：
+
+```bash
+npm run build
+```
 
 如需新增语言：
 
 1. 复制 `locales/en.json`，例如为 `locales/ja.json`。
 2. 翻译其中所有值。
-3. 在插件设置界面中加入对应语言选项。
+3. 在 `src/main.ts` 中加入对应语言选项并执行 `npm run build`。
 
 
 ## 许可证
