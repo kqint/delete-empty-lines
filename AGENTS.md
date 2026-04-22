@@ -34,6 +34,13 @@
     - 构建产物 `main.js` **必须**添加到 `.gitignore`，不提交至 GitHub 仓库。
     - 发布时，通过 GitHub Releases 或 CI/CD 附上构建好的 `main.js`。
 - **插件清单**：`manifest.json` 必须包含 `id`、`name`、`version`、`minAppVersion` 等标准字段。
+- **代码规范**：
+    - Only these console methods are allowed: warn, error, debug.
+    - For a consistent UI use `new Setting(containerEl).setName(...).setHeading()` instead of creating HTML heading elements directly.
+    - 禁止没有 'await' 表达式的异步箭头函数。
+    - 禁止使用 `any` 类型，变量或函数参数必须定义明确的 TypeScript 类型或接口。
+
+
 
 ### 条件：浏览器插件开发
 
@@ -50,5 +57,6 @@
 - 当前项目是 Obsidian 插件，源码入口为 `src/main.ts`，发布入口为构建产物 `main.js`。
 - i18n 采用插件内统一 `t(key, params)` 调用；面向用户文案集中在 `commands`、`contextMenu`、`notices`、`settings` 命名空间。
 - `locales/en.json` 与 `locales/zh-CN.json` 作为语言源文件维护；通过 `npm run build`（esbuild）从独立语言文件打包到 `main.js`，运行时不从外部读取语言文件，且源码中不直接硬编码完整语言对象。
-`whitespaceOnlyLinesAsEmpty`，并兼容历史 `preserveIndentation` 配置迁移。
+- 默认语言配置使用 `auto` 跟随 Obsidian；空白行判定设置使用 `whitespaceOnlyLinesAsEmpty`，并兼容历史 `preserveIndentation` 配置迁移。
+- 设置页标题统一通过 `new Setting(containerEl).setName(...).setHeading()` 创建；控制台输出仅使用 `console.debug`、`console.warn`、`console.error`。
 - `package.json` 提供 `build` 与 `lint` 脚本，开发时至少执行静态检查与构建验证。

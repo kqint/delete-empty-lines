@@ -98,7 +98,7 @@ export default class DeleteEmptyLinesPlugin extends Plugin {
         this.settingTab = new DeleteEmptyLinesSettingTab(this.app, this);
         this.addSettingTab(this.settingTab);
 
-        console.log(this.t('notices.pluginLoaded'));
+        console.debug(this.t('notices.pluginLoaded'));
     }
 
     normalizeLanguage(languageSetting: string | null | undefined): Language {
@@ -290,7 +290,7 @@ export default class DeleteEmptyLinesPlugin extends Plugin {
     }
 
     onunload(): void {
-        console.log(this.t('notices.pluginUnloaded'));
+        console.debug(this.t('notices.pluginUnloaded'));
     }
 }
 
@@ -306,7 +306,9 @@ class DeleteEmptyLinesSettingTab extends PluginSettingTab {
         const { containerEl } = this;
         containerEl.empty();
 
-        containerEl.createEl('h2', { text: this.plugin.t('settings.title') });
+        new Setting(containerEl)
+            .setName(this.plugin.t('settings.title'))
+            .setHeading();
 
         new Setting(containerEl)
             .setName(this.plugin.t('settings.language.name'))
@@ -378,7 +380,10 @@ class DeleteEmptyLinesSettingTab extends PluginSettingTab {
                     });
             });
 
-        containerEl.createEl('h3', { text: this.plugin.t('settings.usage.title') });
+        new Setting(containerEl)
+            .setName(this.plugin.t('settings.usage.title'))
+            .setHeading();
+
         const usageEl = containerEl.createEl('div', { cls: 'setting-item-description' });
         this.createUsageParagraph(usageEl, 'settings.usage.commandPalette', 'settings.usage.commandPaletteDesc');
         this.createUsageParagraph(usageEl, 'settings.usage.contextMenu', 'settings.usage.contextMenuDesc');
