@@ -30,7 +30,7 @@
 - **构建要求**：开发完成后，**必须**使用构建工具（如 `esbuild`、`rollup`、`webpack`）将 `locales/` 目录下的所有语言文件打包进最终的 `main.js` 中。不允许在运行时从外部加载语言文件。
 - **禁止直接内联**：**严禁**在 `main.js` 中以硬编码对象（如 `BUILT_IN_LOCALES = { en: {...}, zh: {...} }`）的方式直接嵌入语言数据。必须通过构建工具从独立的 `locales/*.json` 文件读取并打包，保持语言文件的独立性和可维护性。
 - **版本管理**：
-    - 每次发布前，**必须**更新 `manifest.json` 中的 `version` 字段（遵循语义化版本 `major.minor.patch`）。
+    - 每次发布前，**必须**更新 `manifest.json` 中的 `version` 字段（遵循语义化版本 `major.minor.patch`），禁止带v。
     - 构建产物 `main.js` **必须**添加到 `.gitignore`，不提交至 GitHub 仓库。
     - 发布时，通过 GitHub Releases 或 CI/CD 附上构建好的 `main.js`。
 - **插件清单**：`manifest.json` 必须包含 `id`、`name`、`version`、`minAppVersion` 等标准字段。
