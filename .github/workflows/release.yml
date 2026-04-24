@@ -52,6 +52,19 @@ jobs:
       - name: Build plugin
         run: npm run build
 
+      # 提交版本号变更到远程仓库（仅 package.json / package-lock.json）
+      - name: Commit version bump to remote
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          VERSION="${TAG#v}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add package.json package-lock.json
+          git commit -m "chore: bump version to $VERSION"
+          git push
+
       # 创建GitHub Release (草稿)
       - name: Create release draft
         env:
