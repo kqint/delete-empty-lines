@@ -1,35 +1,65 @@
-name: Release Obsidian plugin
+# .github/workflows/release.yml
 
+name: Release Obsidian plugin
 on:
   push:
     tags:
       - "*"
 
+env:
+  # 强制Actions使用Node.js 24运行时
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v3
+      # 检出代码，使用v5版本
+      - uses: actions/checkout@v5
 
-      - name: Use Node.js
-        uses: actions/setup-node@v3
+      # 设置Node.js环境，使用v4版本。它会自动检测packageManager字段并开启缓存
+      - uses: actions/setup-node@v4
         with:
-          node-version: "18.x"
+          node-version: "22.x" # 或 "20.x"，根据你的项目实际需求设置
 
-      - name: Build plugin
+      # 安装依赖
+      - name: Install dependencies
+        run: npm ci
+
+      # 从git tag中提取版本号，并更新三个JSON文件
+      - name: Sync version to package.json, package-lock.json and manifest.json
         run: |
-          npm install
-          npm run build
+          TAG="${GITHUB_REF#refs/tags/}"
+          VERSION="${TAG#v}"
+          echo "Syncing version to: $VERSION"
 
-      - name: Create release
+          # 安装jq来处理JSON文件
+          sudo apt-get update && sudo apt-get install -y jq
+
+          # 更新三个JSON文件中的version字段
+          for file in package.json package-lock.json manifest.json; do
+            if [ -f "$file" ]; then
+              jq --arg v "$VERSION" '.version = $v' "$file" > temp.json && mv temp.json "$file"
+              echo "✅ Updated $file"
+            fi
+          done
+
+          # 打印manifest.json内容以供检查
+          cat manifest.json
+
+      # 构建插件
+      - name: Build plugin
+        run: npm run build
+
+      # 创建GitHub Release (草稿)
+      - name: Create release draft
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          tag="${GITHUB_REF#refs/tags/}"
-
-          gh release create "$tag" \
-            --title="$tag" \
+          TAG="${GITHUB_REF#refs/tags/}"
+          gh release create "$TAG" \
+            --title="$TAG" \
             --draft \
             main.js manifest.json
